@@ -30,13 +30,17 @@ export default async function Home({ searchParams }: SearchParamsProps) {
       <p className='pb-4 text-3xl font-bold'>Users</p>
       <UserTable users={data.results} />
       <div className='my-5 flex items-center justify-end gap-5'>
-        {pageNumber > 1 && (
+        {pageNumber > 1 ? (
           <Link
-            href={`/?page=${pageNumber - 1}`}
             className='rounded-md bg-blue-600 px-5 py-2 text-white hover:bg-blue-500'
+            href={`/?page=${pageNumber - 1}`}
           >
             Previous
           </Link>
+        ) : (
+          <span className='cursor-not-allowed rounded-md bg-gray-300 px-5 py-2 text-gray-500'>
+            Previous
+          </span>
         )}
         <Link
           href={`/?page=${pageNumber + 1}`}
