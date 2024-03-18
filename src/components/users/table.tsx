@@ -1,7 +1,6 @@
 import { User } from '@/lib/definitions';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 type UserTableProps = {
   users: User[];
@@ -19,7 +18,7 @@ export default function UserTable({ users }: UserTableProps) {
       </thead>
       <tbody>
         {users.map((user: any) => (
-          <tr key={user.login.uuid}>
+          <tr key={user.login.uuid} className='hover:bg-gray-300 '>
             <td>
               <Image
                 src={user.picture.thumbnail}
@@ -36,14 +35,17 @@ export default function UserTable({ users }: UserTableProps) {
               {user.location.city}, {user.location.country}
             </td>
             <td className='px-4 py-2 text-left'>{user.dob.age}</td>
-            <td>
+
+            <td className=' px-4 py-2 text-left'>
               <Link
                 href={{
                   pathname: `/user/${user.login.uuid}`,
                   query: { user: JSON.stringify(user) },
                 }}
               >
-                View Details
+                <button className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'>
+                  View Details
+                </button>
               </Link>
             </td>
           </tr>
