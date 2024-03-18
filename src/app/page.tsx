@@ -13,11 +13,9 @@ async function getData() {
 export default async function Home() {
   const data: { results: User[] } = await getData();
 
-  console.log(data.results);
-
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <p className='text-3xl font-bold'> Users </p>
+      <p className='pb-4 text-3xl font-bold'>Users</p>
       <UserTable users={data.results} />
     </main>
   );
