@@ -17,7 +17,7 @@ export default function UserTable({ users }: UserTableProps) {
         </tr>
       </thead>
       <tbody>
-        {users.map((user: any) => (
+        {users.map((user: User) => (
           <tr key={user.login.uuid} className='hover:bg-gray-300'>
             <td>
               <Image
