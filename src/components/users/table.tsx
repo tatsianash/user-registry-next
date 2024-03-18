@@ -1,5 +1,7 @@
 import { User } from '@/lib/definitions';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 type UserTableProps = {
   users: User[];
@@ -17,7 +19,7 @@ export default function UserTable({ users }: UserTableProps) {
       </thead>
       <tbody>
         {users.map((user: any) => (
-          <tr key={user.id.value}>
+          <tr key={user.login.uuid}>
             <td>
               <Image
                 src={user.picture.thumbnail}
@@ -34,6 +36,16 @@ export default function UserTable({ users }: UserTableProps) {
               {user.location.city}, {user.location.country}
             </td>
             <td className='px-4 py-2 text-left'>{user.dob.age}</td>
+            <td>
+              <Link
+                href={{
+                  pathname: `/user/${user.login.uuid}`,
+                  query: { user: JSON.stringify(user) },
+                }}
+              >
+                View Details
+              </Link>
+            </td>
           </tr>
         ))}
       </tbody>
