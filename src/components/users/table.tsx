@@ -18,14 +18,14 @@ export default function UserTable({ users }: UserTableProps) {
       </thead>
       <tbody>
         {users.map((user: any) => (
-          <tr key={user.login.uuid} className='hover:bg-gray-300 '>
+          <tr key={user.login.uuid} className='hover:bg-gray-300'>
             <td>
               <Image
                 src={user.picture.thumbnail}
                 alt={user.name.first}
                 width={50}
                 height={50}
-                className='rounded-full'
+                className='my-1 ml-2 rounded-full'
               />
             </td>
             <td className='px-4 py-2 text-left'>
@@ -38,14 +38,13 @@ export default function UserTable({ users }: UserTableProps) {
 
             <td className=' px-4 py-2 text-left'>
               <Link
+                className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'
                 href={{
                   pathname: `/user/${user.login.uuid}`,
                   query: { user: JSON.stringify(user) },
                 }}
               >
-                <button className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'>
-                  View Details
-                </button>
+                View Details
               </Link>
             </td>
           </tr>
